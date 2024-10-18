@@ -1,0 +1,53 @@
+body {
+    height: 100vh;
+    background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+    overflow: hidden;
+    filter: drop-shadow(0 0 10px white);
+    margin: 0;
+    position: relative;
+}
+
+.snow {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: white;
+    border-radius: 50%;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh);
+    }
+}
+
+.content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.content h1 {
+    color: red;
+    font-size: 5rem; /* Yazı boyutunu buradan ayarlayabilirsin */
+    margin: 0;
+}
+
+/* Kar animasyonu için JavaScript ile dinamik olarak kar düşürme */
+<script>
+    const totalSnowflakes = 200;
+
+    for (let i = 0; i < totalSnowflakes; i++) {
+        const snowflake = document.createElement('div');
+        snowflake.className = 'snow';
+        const size = Math.random() * 10 + 5; // 5px ile 15px arasında boyut
+        snowflake.style.width = `${size}px`;
+        snowflake.style.height = `${size}px`;
+        snowflake.style.left = `${Math.random() * 100}vw`;
+        snowflake.style.opacity = Math.random();
+        snowflake.style.animationDuration = `${Math.random() * 20 + 10}s`; // 10s ile 30s arasında düşme süresi
+        document.body.appendChild(snowflake);
+    }
+</script>
